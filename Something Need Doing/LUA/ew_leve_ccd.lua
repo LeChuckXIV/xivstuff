@@ -1,14 +1,15 @@
--- Setup Requirements
--- Requires YesAlready installed
--- both leve npcs in the talk section
--- journal result complete needs to be disabled
+-- Setup Requirements --
+-- Stand between both npcs where you can interact with them, enable controller mode to initialise first interaction
+-- Requires YesAlready | both leve npcs in the talk section, journal result complete needs to be disabled
+-- Requires Pandora's Box (third party repo: https://love.puni.sh/ment.json) | Auto Select turn ins
+-- Lua button must be enabled in SND macro editor
 
+-- !!! This and above does not need to be included in script !!!
 
 -- Initialisation
-amount = 93 -- loop amount
+amount = 69 -- loop amount
 ec = false -- error checking
 key_confirm = "numpad0" -- default: numpad0
-key_submenu = "multiply" -- default: multiply
 key_escape = "escape" -- default: escape
 
 -- Start Macro
@@ -119,57 +120,25 @@ for i = 1, amount, 1 do
   -- End practical command error checking
 
   -- Start hand over process
-  ::send_multiply::
+  ::hand_over::
   if IsAddonReady("Request") and IsAddonVisible("Request") then
-    yield('/waitaddon "Request"' )
-  
-    yield('/send ' .. key_submenu )
-    yield('/wait 0.2' )
-
-    ::select_item::
-    if IsAddonReady("ContextIconMenu") and IsAddonVisible("ContextIconMenu") then
-      yield('/waitaddon "ContextIconMenu"' )
-      yield('/send ' .. key_confirm )
-      yield('/wait 0.2' )
-      ::hand_over::
-      if not (IsAddonReady("ContextIconMenu") and IsAddonVisible("ContextIconMenu")) then
-        yield('/click request_hand_over' )
-      else
-        yield('/wait 0.5' )
-        if attempts > max_attempts then
-          yield('/echo Macro Ended - Failure' )
-          return
-        else
-          if ec then yield('/echo hand over failed attempt: ' .. attempts .. ', waiting' ) end
-          attempts = attempts + 1
-          goto hand_over
-        end
-      end    
-    else
-      yield('/wait 0.5' )
-      if attempts > max_attempts then
-        yield('/echo Macro Ended - Failure' )
-        return
-      else
-        if ec then yield('/echo select practical failed attempt: ' .. attempts .. ', waiting' ) end
-        attempts = attempts + 1
-        goto send_multiply
-      end
-    end
-  else 
+yield('/waitaddon "Request"' )
+yield('/wait 0.5' )
+yield('/click request_hand_over' )
+  else
     yield('/wait 0.5' )
     if attempts > max_attempts then
       yield('/echo Macro Ended - Failure' )
       return
     else
-      if ec then yield('/echo context menu failed attempt: ' .. attempts .. ', waiting' ) end
+      if ec then yield('/echo hand over failed attempt: ' .. attempts .. ', waiting' ) end
       attempts = attempts + 1
-      goto send_multiply 
+      goto hand_over
     end
   end
-  -- End hand over process
 
   -- Start journal error checking
+  
   ::complete_leve::
   if IsAddonReady("JournalResult") and IsAddonVisible("JournalResult") then
     yield('/waitaddon "JournalResult"' )
