@@ -1,4 +1,4 @@
-~~~ Timeers for these are untested, due to bugs with timers and duty recorder, but should be accurate ~~~
+--Timers may not be 100% accurate, but close enough--
 
 Cryptic 1
 
