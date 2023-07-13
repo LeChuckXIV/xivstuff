@@ -1,0 +1,1 @@
+currently only works for normal mode, if someone wants to send me a recording with savage i can fix it for that, a couple of the triggers for boss 2 and 3 use ids that aren't for savage, and i can't test those
