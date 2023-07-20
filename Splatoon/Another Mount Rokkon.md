@@ -27,6 +27,12 @@ Multi
 
 Boss 2 - Gorai
 ---------------------
+Waymarks for Jumps
+```
+{"Name":"Gorai","MapID":946,"A":{"X":305.336,"Y":7.0,"Z":-115.488,"ID":0,"Active":true},"B":{"X":280.918,"Y":7.0,"Z":-122.873,"ID":1,"Active":true},"C":{"X":318.904,"Y":7.0,"Z":-122.291,"ID":2,"Active":true},"D":{"X":281.459,"Y":7.0,"Z":-116.292,"ID":3,"Active":true},"One":{"X":300.009,"Y":7.0,"Z":-101.839,"ID":4,"Active":true},"Two":{"X":280.848,"Y":7.0,"Z":-139.37,"ID":5,"Active":true},"Three":{"X":318.847,"Y":6.999,"Z":-137.971,"ID":6,"Active":true},"Four":{"X":281.956,"Y":7.0,"Z":-101.615,"ID":7,"Active":true}}
+```
+These make it very easy, 1-3 start on their numbers, and move to their colour after jump, 4 starts on their letter and moves to their number after 1 jump
+
 Base Multi
 
 ```
